@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HAPPY BIRTHDAY</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* column add kiya */
+  justify-content: flex-start; /* top se start */
+  align-items: center; /* center horizontally */
+  background-image: url('file:///E:/Important/Bg/Source_4.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding-top: 50px; /* thoda gap upar se */
+}
+
+    .envelope {
+      position: relative;
+      width: 550px;
+      height: 330px;
+      border: 4px solid rgb(242, 25, 126);
+      perspective: 1500px;
+    }
+
+    .base {
+      width: 100%;
+      height: 100%;
+      background: url('file:///E:/Important/Bg/Floral3.jpg') no-repeat center/cover;
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      transform-origin: top;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .envelope:hover .flap {
+      transform: rotateX(160deg);
+    }
+
+    .letter {
+      position: absolute;
+      top: 50px;
+      left: 10%;
+      width: 80%;
+      height: 90%;
+      background: rgb(245, 164, 241);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(80px);
+      transition: transform 0.6s, opacity 0.6s;
+      z-index: 0;
+      overflow: auto;
+      padding-bottom: 20px;
+    }
+
+    .envelope:hover .letter {
+      opacity: 1;
+      transform: translateY(-40px);
+      z-index: 3;
+    }
+
+    .hbd {
+      position: relative;
+      margin-top: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: rgb(242, 25, 126);
+      text-align: center;
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      white-space: nowrap;
+    }
+
+    .ph {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .ph img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: contain;   /* ✅ pehle cover tha */
+  background: #fff;      /* extra space ke jagah white bg dikhayega */
+  transition: transform 0.3s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;          /* ✅ poora image show hoga */
+  object-fit: contain;   /* cut nhi hoga */
+  border-radius: 10px;
+  background: #fff;
+}
+
+    .ph img:hover {
+      transform: scale(1.05);
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    polygon.flap-shape {
+      fill: url(#floralPattern);
+      stroke: rgb(242, 25, 126);
+      stroke-width: 1;
+      stroke-linejoin: round;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 350px;
+      width: 90%;
+      animation: zoomIn 0.3s ease;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+   .final {
+  font-size: 18px;
+  font-weight: bold;
+  color: #880E4F;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px; /* envelope ke niche spacing */
+  animation: popIn 1s ease;
+  width: 80%;
+}}
+
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="envelope">
+    <div class="base"></div>
+
+    <!-- Flap -->
+    <div class="flap">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <pattern id="floralPattern" patternUnits="userSpaceOnUse" width="100" height="100">
+            <image href="file:///E:/Important/Bg/Floral3.jpg" x="0" y="0" width="100" height="100" />
+          </pattern>
+        </defs>
+        <polygon class="flap-shape" points="0,0 50,50 100,0"/>
+      </svg>
+    </div>
+
+    <!-- Letter -->
+    <div class="letter">
+      <div class="hbd">HAPPIEST BIRTHDAY BACHI</div>
+      <div class="ph">
+        <img src="E:/Important/Photo/4.jpg" alt="Photo 1" data-text="This photo is so close to my heart as this shows me baby Nidhi and the only wish to keep you happy as you were in your childhood 🩷">
+        <img src="E:/Important/Photo/2.jpg" alt="Photo 2" data-text="Meri Radhrani 😘 ">
+        <img src="E:/Important/Photo/1.jpg" alt="Photo 3" data-text="My eye got teary 🥹 after seeing your smile in this photo may god always bless you and you keep smiling always❤️❤️😘">
+        <img src="E:/Important/Photo/8.jpg" alt="Photo 4" data-text="As I always say 🥰 every color of the world suits you but Pink🩷 hits different after seeing you in pink my heart skips beat i just got stuck in thoughts 😍😍 ">
+        <img src="E:/Important/Photo/3.jpg" alt="Photo 5" data-text="The Cuteness this photo holds is something different🥹 memories of this day is totally different thank you for everything jaaan ❤️❤️🩷🩷 🥹 🥹 ">
+        <img src="E:/Important/Photo/5.jpg" alt="Photo 6" data-text="This was actually the dil wali Diwali for me ❤️ becuase the way you got ready 👌👌😘😘Mera to dil hi agaya tha ik ik thoda clash hua tha par abh 😔😔">
+        <img src="E:/Important/Photo/6.jpg" alt="Photo 7" data-text="Ik ik you will never over this dress this dress is so so so so pretty yrrrr 😭😭mtln every color every style suits you the perfect and i am so gratefull to god that he sent you to me i am so blessed 😇😇😇😊😊😊">
+        <img src="E:/Important/Photo/7.jpg" alt="Photo 8" data-text="This Photo will alwayss stay close to my heart the day when everything was on my side and again fall for you and then i finally came to know that she is the girl who will always stay with me and i got the most asthetic and the most beautiful girl in  this whole world 😊😊❤️❤️😍😍😍😍😍😘😘😘😘😘">
+        <img src="E:/Important/Photo/9.jpg" alt="Photo 9" data-text="After seeing this photo the first thing that comes to my mind is that on that day you were so happy after getting that small balloon on that day after seeing your smile i got melted and came to know that i want to keep always your inner child alive and wanted to love you like a father 🥹🥹🥹🥹😘😘😘😘😘😘😍😍😍😍❤️❤️❤️❤️I love you the most world's most beautiful girllllllllllll alwaysss your's only
+                    ~Hosiyari😎🩷❤️😘">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="myModal">
+    <span class="close" id="closeBtn">&times;</span>
+    <div class="modal-content">
+      <img id="modalImg" src="">
+      <p id="modalText"></p>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalText = document.getElementById("modalText");
+    const closeBtn = document.getElementById("closeBtn");
+
+    document.querySelectorAll(".ph img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+        modalText.textContent = img.getAttribute("data-text");
+      });
+    });
+
+    closeBtn.onclick = () => {
+      modal.style.display = "none";
+    }
+
+    window.onclick = (e) => {
+      if (e.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  <!-- Envelope div ke baad -->
+<div class="final">
+  So my pretty little baby that was it from my side ik kuch jada nhi banaya hai parrr😘😘❤️❤️ <br>mera pyar isse bht jadaaaa ahai bss me bana nhi paya isse jada😂 haanji toh that's all jaaan next year or achese karugaaaa 😘😘😘😘😘<br>
+  I love you the mosttttt meri SK❤️❤️❤️😘😘😘 <br>Alwyaysssssss by your sideee bububuuuuu😘😘😘😘<br> your's only <br>
+  ~Sagar😎😘😍
+</div>
+
+</body>
+</html>

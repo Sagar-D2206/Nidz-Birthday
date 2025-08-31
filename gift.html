@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gift Surprise Image</title>
+  <style>
+    body {
+      background-image: url('file:///E:/Important/Bg/Source.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* common gift box style */
+    .gift-box {
+      background: url("file:///E:/Important/Bg/Gift.png") no-repeat center/contain;
+      cursor: pointer;
+      animation: popIn 1s ease; /* entry animation */
+      transition: transform 0.4s ease;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    /* first gift (bigger) */
+    #gift {
+      left : 50%;
+      width: 450px;
+      height: 450px;
+    }
+
+    /* second gift (smaller) */
+    .second-gift {
+  margin-top: 20px; /* existing spacing */
+  text-align: center;
+  animation: popIn 1s ease;
+  position: relative; /* add this */
+}
+
+.second-gift .gift-box {
+  width: 290px;
+  height: 290px;
+  margin: auto;
+  transform: translateY(-50px); /* upar ke liye -ve value */
+}
+
+
+    /* animation for appearing */
+    @keyframes popIn {
+      0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+      60% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0); }
+    }
+
+    /* open animation when clicked */
+    @keyframes openGift {
+      0% { transform: scale(1) rotate(0); }
+      30% { transform: scale(1.2) rotate(10deg); }
+      60% { transform: scale(0.8) rotate(-10deg); }
+      100% { transform: scale(0) rotate(20deg); opacity: 0; }
+    }
+
+    .gift-open {
+      animation: openGift 1s forwards;
+    }
+
+    /* video screen */
+    .video-container {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 0;
+      width: 1500px;
+      height: 550px;
+      background-image: url('file:///E:/Important/Bg/Source.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: 999;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-container video {
+      width: 80%;
+      height: 80%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: popIn 1s ease;
+    }
+
+    /* second gift container */
+    .second-gift {
+      margin-top: 20px;
+      text-align: center;
+      animation: popIn 1s ease;
+    }
+
+    .second-gift p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #880E4F;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- First Gift -->
+  <div class="gift-box" id="gift"></div>
+
+  <!-- Video + Second Gift -->
+  <div class="video-container" id="videoBox">
+    <video controls playsinline>
+      <source src="file:///E:/Important/Video/Happy Birthday.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+
+    <div class="second-gift">
+      <div class="gift-box" id="secondGift"></div>
+    </div>
+  </div>
+
+  <script>
+    const gift = document.getElementById('gift');
+    const videoBox = document.getElementById('videoBox');
+    const secondGift = document.getElementById('secondGift');
+
+    // First gift open
+    gift.addEventListener('click', () => {
+      gift.classList.add('gift-open');
+      setTimeout(() => {
+        gift.style.display = 'none';
+        videoBox.style.display = 'flex';
+
+        const video = videoBox.querySelector('video');
+        video.play(); // play video with sound (no autoplay before click)
+      }, 1000);
+    });
+
+    // Second gift redirect
+    secondGift.addEventListener('click', () => {
+      secondGift.classList.add('gift-open');
+      setTimeout(() => {
+        window.location.href = "Main_4.4.html"; // replace with your link
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
